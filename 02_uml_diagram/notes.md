@@ -119,3 +119,30 @@ A change in the independent class (e.g., `Car`) may occasionally affect the depe
 | + __init__(name: str) -> None     |  . . . . . .> | + __init__(brand: str) -> None    |
 | + drive(car: Car) -> None         |   depends-on  | + start_engine() -> str           |
 +-----------------------------------+               +-----------------------------------+
+```
+
+
+## 6. Realization (Interface / Protocol implementation)
+
+**Concept:** 
+Realization is a relationship between two entities where one entity (a class) implements or fulfills the contract, behavior, or specification defined by another entity (an abstract class or interface). 
+
+In Python, this is typically achieved using the built-in `abc` (Abstract Base Classes) module. The parent class defines abstract methods (`@abstractmethod`) with no implementation, and any concrete child class **must** implement those methods to fulfill the contract.
+
+### UML Class Diagram (Text Format)
+
+```text
++-----------------------------------+
+|            «interface»            |
+|          PaymentGateway           |
++-----------------------------------+
+| + process_payment(amount: float)  |
++-----------------------------------+
+                  ▲
+                  │  Realization (Dashed line with hollow triangular arrowhead)
+                  │
++-----------------------------------+
+|         CreditCardPayment         |
++-----------------------------------+
+| + process_payment(amount: float)  |
++-----------------------------------+
