@@ -99,3 +99,23 @@ In this code, `Student` inherits from `Person`. It uses `super().__init__()` to 
 | + get_roll_no() -> int            |
 | + get_student_details() -> str    |
 +-----------------------------------+
+```
+
+## 5. Dependency (`uses-a` / transient relationship)
+
+**Concept:** 
+Dependency is a weaker "uses-a" relationship where one class (the independent class) is used temporarily by another class (the dependent class). Typically, the dependent class receives the independent object as a method argument, creates it locally inside a method, or calls a static method, **without storing it as an instance attribute**.
+
+A change in the independent class (e.g., `Car`) may occasionally affect the dependent class (`Driver`), but there is no persistent structural ownership or association.
+
+### UML Class Diagram (Text Format)
+
+```text
++-----------------------------------+               +-----------------------------------+
+|              Driver               |               |                Car                |
++-----------------------------------+               +-----------------------------------+
+| - __name: str                     |               | - __brand: str                    |
++-----------------------------------+               +-----------------------------------+
+| + __init__(name: str) -> None     |  . . . . . .> | + __init__(brand: str) -> None    |
+| + drive(car: Car) -> None         |   depends-on  | + start_engine() -> str           |
++-----------------------------------+               +-----------------------------------+
